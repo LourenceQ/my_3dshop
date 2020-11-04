@@ -10,8 +10,8 @@ class Categoria(models.Model):
         verbose_name = 'categoria'
         verbose_name_plural = 'categorias'
 
-    def __str__(seflf):
-        return self.name
+    def __str__(self):
+        return self.nome
 
 class Produto(models.Model):
     categoria = models.ForeignKey(Categoria, related_name='produtos',on_delete=models.CASCADE)
@@ -29,6 +29,6 @@ class Produto(models.Model):
         index_together = (('id', 'slug'),)
 
     def __str_(self):
-        return self.name
+        return self.nome
 
 # Create your models here.

@@ -5,11 +5,11 @@ from .models import Categoria, Produto
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ['nome','slug']
-    preopupulated_fields = {'slug':('name',)}
+    prepopulated_fields = {'slug':('nome',)}
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
     list_display = ['nome','slug','preco','disponivel','criado','atualizado']
     list_filter = ['disponivel','criado','atualizado']
     list_editable = ['preco','disponivel']
-    preopopulated_fields = {'slug':('nome',)}
+    prepopulated_fields = {'slug':('nome',)}
