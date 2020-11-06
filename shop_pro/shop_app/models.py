@@ -1,5 +1,5 @@
 from django.db import models
-from django.db import models
+from django.urls import reverse
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=200,db_index=True)
@@ -12,6 +12,9 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nome
+
+    def get_absolute_url(self):
+        return reverse('shop:lista_produto_by_category',args=[self.slug])
 
 class Produto(models.Model):
     categoria = models.ForeignKey(Categoria, related_name='produtos',on_delete=models.CASCADE)
@@ -30,5 +33,8 @@ class Produto(models.Model):
 
     def __str_(self):
         return self.nome
+
+    def get_absolute_url(selg):
+        return reverse('shop:detalhe_produto',args=[self.id, self.slug])
 
 # Create your models here.
