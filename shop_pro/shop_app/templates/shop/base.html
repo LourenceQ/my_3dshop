@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Meu Shop 3D {% endblock %}</title>
+    <link rel="stylesheet" href="{% static css/base.css %}">
+  </head>
+
+  <body>
+
+    <div id="header">
+      <a href="/" class="logo">Meu Shop 3D</a>
+    </div>
+
+    <div class="cart">
+      Seu carrinho está vazio.
+    </div>
+
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>
