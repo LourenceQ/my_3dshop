@@ -6,15 +6,15 @@ from .models import Categoria, Produto
 def lista_produto(request, categoria_slug=None):
     categoria = None
     categorias = Categoria.objects.all()
-    produtos = Produto.objects.filter(disponivel=True)
+    produto = Produto.objects.filter(disponivel=True)
 
     if categoria_slug:
         categoria = get_ojects_or_404(Categoria, slug=categoria_slug)
         produtos = produtos.filter(categoria=categoria)
-    return render(request,'shop/product/list.html',
+    return render(request,'shop/produto/lista.html',
                          {'categoria':categoria,
-                         'categorias':ategorias,
-                         'produtos':produtos})
+                         'categorias':categorias,
+                         'produto':produto})
 
 def detalhe_produto(request, id, slug):
     produto = get_object_or_404(Produto,
