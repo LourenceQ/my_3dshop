@@ -14,7 +14,7 @@
     <ul>
 
       <li {% if not categoria %}class="selected"{% endif %}>
-        <a href="{% url "shop:lista_produto" %}">Tudo</a>
+        <a href="{% url "shop_app:lista_produto" %}">Tudo</a>
       </li>
 
       {% for c in categoria %}

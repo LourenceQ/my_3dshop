@@ -9,7 +9,7 @@ def lista_produto(request, categoria_slug=None):
     produto = Produto.objects.filter(disponivel=True)
 
     if categoria_slug:
-        categoria = get_ojects_or_404(Categoria, slug=categoria_slug)
+        categoria = get_object_or_404(Categoria, slug=categoria_slug)
         produtos = produtos.filter(categoria=categoria)
     return render(request,'shop/produto/lista.html',
                          {'categoria':categoria,
