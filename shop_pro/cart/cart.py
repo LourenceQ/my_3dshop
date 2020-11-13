@@ -30,3 +30,35 @@ class Carrinho(object):
     def save(self):
         # marca a sessão como modificada para certificar que foi salva
         self.session.modified = True
+
+    def remove(self, product):
+        """
+        Remove o produto do carrinho.
+        """
+        produto_id = str(produto.id)
+        if produto_id = str(produto.id):
+            del self.carrinho[produto_id]
+            self.save()
+
+    def __iter__(self):
+        """
+        Itera sobre os items no carrinho e pega os produtos do banco de dados.
+        """
+        produto_ids = self.carrinho.keys()
+        # pega o produto dos objetos e adiciona-os ao carrinho
+        produtos = Produto.objects.filter(id__in=produto_ids)
+
+        carrinho = self.carrinho.copy()
+        for produto in produtos:
+            carrinho[str(produto.id)]['produto'] = produto
+
+        for item in carrinho.values():
+            item['preco'] = Decimal(item['preco'])
+            item['total_preco'] = item['preco'] * item['quantidade']
+            yield item
+
+        def __len__(self):
+            """
+            Counta todos os items no carrinho.
+            """
+            return sum(item['quantidade'] for item in self.carrinho.valor())
