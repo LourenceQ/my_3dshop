@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
-from shop.models import Produto
+from shop_app.models import Produto
 
 class Carrinho(object):
     def __init__(self, request):
@@ -36,7 +36,7 @@ class Carrinho(object):
         Remove o produto do carrinho.
         """
         produto_id = str(produto.id)
-        if produto_id = str(produto.id):
+        if produto_id in self.cart:
             del self.carrinho[produto_id]
             self.save()
 
