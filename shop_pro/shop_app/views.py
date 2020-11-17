@@ -3,6 +3,7 @@ from .models import Categoria, Produto
 
 # Create your views here.
 # Create your views here.
+# Create your views here.
 
 def lista_produto(request, categoria_slug=None):
     categoria = None
