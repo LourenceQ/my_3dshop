@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Categoria, Produto
 
-# Create your views here.
+# 
 # Create your views here.
 # Create your views here.
 
