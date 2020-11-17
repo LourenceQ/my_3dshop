@@ -1,0 +1,56 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+  Seu carrinho de compras
+{% endblock %}
+
+{% block content %}
+  <h1>Seu carrinho de compras</h1>
+  <table class="carrinho">
+    <thead>
+      <tr>
+        <th>Imagem</th>
+        <th>Produto</th>
+        <th>quantidade</th>
+        <th>Remover</th>
+        <th>Preço unitário</th>
+        <th>Preço</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+        {% with produto=item.produto %}
+          <tr>
+            <td>
+              <a href="{{ produto.get_absolute_url }}">
+                <img src="{% if produto.imagem %} {{ produto.imagem.url}}
+                {% else %} {% static "img/no_img.png"%} {% endif %}">
+              </a>
+            </td>
+            <td>{{ produto.nome }}</td>
+            <td>{{ item.quantidade }}</td>
+            <td>
+              <form action="{% url "carrinho:carrinho_remove" produto.id %}" method="post">
+
+                <input type="submit" value="Remove">
+                {% csrf_token%}
+              </form>
+            </td>
+            <td class="num">${{ item.preco }}</td>
+            <td class="num">${{ item.ottal_price }}</td>
+          </tr>
+          {% endwith %}
+        {% endfor %}
+        <tr class="total">
+          <td>Total</td>
+          <td colspan="4"></td>
+          <td class="num">${{ carrinho.get_total_price }}</td>
+        </tr>
+      </tbody>
+  </table>
+  <p class="text-rigt">
+    <a href="{% url "shop_app:produto_lista" %}" class="button light">Continue shoping</a>
+    <a href="#" class="button">Checkout</a>
+  </p>
+  {% endblock %}
