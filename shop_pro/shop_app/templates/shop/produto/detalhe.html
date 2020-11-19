@@ -16,5 +16,11 @@
     </a>
   </h2>
   <p class="price">${{ product.price }}</p>
+  <form action="{% url "carrinho_adiciona" produto.id %}" method="post">
+    {{ carrinho_produto_form }}
+    {% csrf_token %}
+    <input type = "submit" value="Adcicionar ao carrinho">
+    </form>
+    {{ produto.description|linebraks }}
 </div>
 {% endblock %}

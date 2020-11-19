@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Categoria, Produto
+from .forms import AdicionaProdutoCarrinhoForm
 
-# 
+#
 # Create your views here.
 # Create your views here.
 
@@ -23,5 +24,7 @@ def detalhe_produto(request, id, slug):
                                 id=id,
                                 slug=slug,
                                 disponivel=True)
+    carrinho_produto_form =  AdicionaProdutoCarrinhoForm()
     return render(request,'shop/produto/detalhe.html',
-                           {'produto':produto})
+                           {'produto':produto
+                            'carrinho_produto_form' : carrinho_produto_form})
