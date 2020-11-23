@@ -16,7 +16,17 @@
     </div>
 
     <div class="cart">
-      Seu carrinho está vazio.
+      {% with total_items=cart | length %}
+        {% if total_items > 0 %}
+          Seu carrinho:
+        <a href="{% url "cart:cart_detail" %}">
+          {{ total_items }}item{{ total_items|pluralize }},
+          ${{ cart.get_total_price }}
+        </a>
+        {% else %}
+          Seu carrinho está vazio.
+        {% endif %}
+      {% endwith %}
     </div>
 
     <div id="content">
