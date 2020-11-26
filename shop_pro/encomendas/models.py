@@ -1,5 +1,5 @@
 from django.db import models
-from shop.models import Produto
+from shop_app.models import Produto
 
 # Create your models here.
 
